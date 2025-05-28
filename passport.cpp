@@ -183,6 +183,20 @@ void createPassport() {
     
 }
 void retrievePassports() {
+    if (head == nullptr) {
+        cout << "No passports found.\n";
+        return;
+    }
+    Passport* temp = head;
+    cout << "\n-- List of Passports --\n";
+    while (temp != nullptr) {
+        cout << "ID: " << temp->id << ", Name: " << temp->fullname
+             << ", DOB: " << temp->dob << ", Nationality: " << temp->nationality
+             << ", Phone: " << temp->phoneNumber << ", Gender: " << temp->gender
+             << ", Created: " << temp->createdDate << ", Appointment: " << temp->appointmentDate
+             << ", Payment: " << temp->payment << ", Pass Type: " << temp->passType << "\n";
+        temp = temp->next;
+    }
 
 }
 void updatePassport() {
