@@ -226,8 +226,22 @@ void deletePassport() {
     }
 }
 void searchPassport(){
-
-}
+   string id;
+        Passport* temp = head;
+        while (temp != nullptr) {
+            if (temp->id == id) {
+                cout << "Passport Found:\n";
+                cout << "ID: " << temp->id << ", Name: " << temp->fullname
+                     << ", DOB: " << temp->dob << ", Nationality: " << temp->nationality
+                     << ", Phone: " << temp->phoneNumber << ", Gender: " << temp->gender
+                     << ", Created: " << temp->createdDate << ", Appointment: " << temp->appointmentDate
+                     << ", Payment: " << temp->payment << ", Pass Type: " << temp->passType << "\n";
+                return;
+            }
+            temp = temp->next;
+        }
+        cout << "Passport not found.\n";
+    }
 void sortPassports(){
 
 }
