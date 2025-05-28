@@ -189,7 +189,41 @@ void updatePassport() {
 
 }
 void deletePassport() {
+ int deleteChoice;
+    cout << "Delete Options:\n1. Delete by ID\n2. Delete All\nEnter choice (1 or 2): ";
+    cin >> deleteChoice;
+    cin.ignore();
 
+    if (deleteChoice == 1) {
+        string id;
+        cout << "Enter Passport ID to delete: ";
+        getline(cin, id);
+
+        Passport* temp = head;
+        Passport* prev = nullptr;
+        while (temp != nullptr) {
+            if (temp->id == id) {
+                if (prev == nullptr) {
+                    head = temp->next;
+                } else {
+                    prev->next = temp->next;
+                }
+                delete temp;
+                saveToFile();
+                cout << "Passport deleted successfully!\n";
+                return;
+            }
+            prev = temp;
+            temp = temp->next;
+        }
+        cout << "Passport not found.\n";
+    } else if (deleteChoice == 2) {
+        freeList();
+        saveToFile();
+        cout << "All passports deleted successfully!\n";
+    } else {
+        cout << "Invalid choice!\n";
+    }
 }
 void searchPassport(){
 
